@@ -1,22 +1,17 @@
 import Vue from 'vue'
 import App from './App'
+import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
+import { configRouter } from './config_router'
 
-import VueRouter form 'vue-router'
-import VueResource form 'vue-resource'
+Vue.use(VueResource)
+Vue.use(VueRouter)
 
-Vue.use(VueResource);
-Vue.use(VueRouter);
+const router = new VueRouter({
+	history:true,
+	saveScrollPosition:true
+})
 
-const router new VueRouter();
+configRouter(router)
 
-router.map({
-	'/index': {
-		component: App
-	}
-});
-
-router.redirect({
-	'*': '/index'
-});
-
-router.start(App, '#app');
+router.start(App, 'app')
